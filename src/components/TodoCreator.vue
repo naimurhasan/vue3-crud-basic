@@ -1,18 +1,43 @@
 <script setup>
 import {reactive} from "vue"
 
-const todoState = reactive({
-  todo: "Testing"
+const props = defineProps({
+  count: {
+    type: Number,
+    required: true,
+  },
 })
+
+const emit = defineEmits(["create-todo"])
+
+const todoState = reactive({
+  todo: "",
+  invalid: false,
+  errMsg: "",
+})
+
+const createTodo = () => {
+  if(todoState.todo==""){
+    todoState.invalid = true
+    todoState.errMsg = "Please enter a todo"
+    return
+  }
+  emit("create-todo", todoState.todo)
+  todoState.todo = ""
+  todoState.invalid = false
+  todoState.errMsg = ""
+}
+
 </script>
 
 <template>
   <div class="container">
-    <h1>Create Todo</h1>
+    <h1>Create Todo <span v-show="count">{ {{ count }} }</span></h1>
     <div class="input-wrap">
-      <input name="todo" type="text" v-model="todo" placeholder="Enter Todo" />
-      <button>Add Todo</button>
+      <input name="todo" type="text" v-model="todoState.todo" placeholder="Enter Todo" />
+      <button @click="createTodo()">Add Todo</button>
     </div>
+    <p v-show="todoState.invalid" class="error">{{todoState.errMsg}}</p>
   </div>
 </template>
 
@@ -21,6 +46,10 @@ const todoState = reactive({
 <style lang="scss" scoped>
 .container{
   text-align: center;
+
+  .error{
+    color: red;
+  }
 
   .input-wrap{
     display: flex;
