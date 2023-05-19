@@ -2,6 +2,9 @@
 
 This is a simple toto app with Vue 3 in Vite.
 
+### Preview
+  [Click to see Live Demo](https://naimurhasan.github.io/vue3-crud-basic/preview/)
+
 ### Learning
 - crud in vue
 - ref
