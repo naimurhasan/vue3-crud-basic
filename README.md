@@ -1,6 +1,22 @@
-# vue3todo
+### vue3todo
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a simple toto app with Vue 3 in Vite.
+
+### Learning
+- crud in vue
+- ref
+- reactive
+- v bindings
+- computed
+- mounted
+- watch
+- props
+- conditional display
+- dynamic class
+
+### Preview
+
+![screenshot](screenshot.png)
 
 ## Recommended IDE Setup
 
